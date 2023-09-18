@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:weightSum="14"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="96dp"
+        android:background="#9FC52ECF"
+        android:paddingLeft="10dp"
+        android:gravity="center"
+        android:textColor="#FAF6F6"
+        android:text="Món ăn ngon"
+        android:textSize="40sp"
+        />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:src="@drawable/monan1"
+        />
+    <androidx.cardview.widget.CardView
+        android:layout_width="410dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_margin="0dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="20dp"
+        >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#DCBFB7BF"
+        android:paddingLeft="20dp"
+        android:textColor="#0B0B0B"
+        android:text="Món ăn miền Bắc"
+        android:textSize="30sp"
+        android:drawableRight=""
+        />
+
+
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="136dp"
+            android:layout_height="200dp"
+            android:src="@drawable/anh2" />
+
+        <ImageView
+            android:layout_width="136dp"
+            android:layout_height="200dp"
+            android:src="@drawable/anh3" />
+
+        <ImageView
+            android:layout_width="136dp"
+            android:layout_height="200dp"
+            android:src="@drawable/anh4" />
+
+
+
+    </LinearLayout>
+
+</LinearLayout>
