@@ -15,6 +15,7 @@
         android:gravity="center"
         android:textColor="#FAF6F6"
         android:text="Món ăn ngon"
+        android:fontFamily="cursive"
         android:textSize="40sp"
         />
     <ImageView
@@ -49,23 +50,58 @@
         android:layout_height="280dp"
         android:orientation="horizontal">
 
-        <ImageView
-            android:layout_width="136dp"
-            android:layout_height="200dp"
-            android:src="@drawable/anh2" />
+        <LinearLayout
 
-        <ImageView
-            android:layout_width="136dp"
-            android:layout_height="200dp"
-            android:src="@drawable/anh3" />
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+            <ImageView
+                android:layout_width="136dp"
+                android:layout_height="200dp"
+                android:src="@drawable/anh2"
+                />
+            <TextView
+                android:text="Xoi com Ha Noi"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
 
-        <ImageView
-            android:layout_width="136dp"
-            android:layout_height="200dp"
-            android:src="@drawable/anh4" />
+        <LinearLayout
+            android:layout_marginLeft="5dp"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+            <ImageView
+                android:layout_width="136dp"
+                android:layout_height="200dp"
+                android:src="@drawable/anh3"
+                />
+            <TextView
+                android:text="Mi ga tan"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginLeft="5dp"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+            <ImageView
+                android:layout_width="136dp"
+                android:layout_height="200dp"
+                android:src="@drawable/anh4"
+                />
+            <TextView
+                android:text="Long"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
 
-
-
-    </LinearLayout>
-
+</LinearLayout>
 </LinearLayout>
