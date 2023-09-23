@@ -39,7 +39,6 @@
         android:textColor="#0B0B0B"
         android:text="Món ăn miền Bắc"
         android:textSize="30sp"
-        android:drawableRight=""
         />
 
 

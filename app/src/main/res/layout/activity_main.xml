@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-
-    <LinearLayout
+    <TextView
+        android:id="@+id/title"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:gravity="center">
+        android:background="#9FC52ECF"
+        android:paddingLeft="10dp"
+        android:gravity="center"
+        android:textColor="#FAF6F6"
+        android:text="Món ăn ngon"
+        android:fontFamily="cursive"
+        android:textSize="40sp"
+        />
 
-        <TextView
-            android:layout_width="411dp"
-            android:layout_height="match_parent"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:background="#1C6A7E"
-            android:gravity="center"
-            android:text="Món ăn ngon"
-            android:textColor="@color/white"
-            android:textSize="30sp" />
-    </LinearLayout>
-    <GridView
-        android:background="#EEEEEE"
+    <ListView
+        android:id="@+id/listDish"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingTop="10dp"
+        android:layout_height="wrap_content"
         android:numColumns="2"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
+        android:verticalSpacing="10dp"
         android:horizontalSpacing="20dp"
-        android:verticalSpacing="15dp"
-        tools:listitem="@layout/item_layout" />
-</LinearLayout>
+        android:paddingLeft="10dp"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
