@@ -1,21 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:orientation="vertical"
-tools:context=".MainActivity">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:weightSum="5"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
     <TextView
+        android:id="@+id/textView1"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:background="#9FF4F2F4"
-        android:paddingLeft="20dp"
         android:gravity="center"
-        android:textColor="#090909"
         android:text="User profile"
+        android:textColor="#090909"
         android:textSize="25sp"
-        />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="0dp" />
 
+    <Button
+        android:id="@+id/btn_home"
+        android:layout_width="400dp"
+        android:layout_height="45dp"
+        android:backgroundTint="#F3F1F1"
+        android:text="Home"
+        android:textSize="20dp"
+        android:paddingLeft="20dp"
+        android:textColor="@color/light_gray"
+        android:drawableLeft="@drawable/baseline_arrow_back_ios_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView1"
+        app:layout_constraintVertical_bias="0.0" />
 
-</LinearLayout>
+    <ImageView
+        android:id="@+id/user1"
+        android:layout_width="135dp"
+        android:layout_height="115dp"
+        android:src="@drawable/user1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.547"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_home"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:gravity="center"
+        android:text="Nguyen Thi Linh"
+        android:textColor="#090909"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user1"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="5dp" />
+
+    <Button
+        android:id="@+id/btn_account"
+        android:layout_width="400dp"
+        android:layout_height="45dp"
+        android:backgroundTint="#DDD7D7"
+        android:paddingLeft="20dp"
+        android:text="Account"
+        android:textColor="#333232"
+        android:textSize="18dp"
+        android:drawableLeft="@drawable/baseline_person_pin_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_bias="0.097" />
+
+    <Button
+        android:id="@+id/btn_information"
+        android:layout_width="400dp"
+        android:layout_height="45dp"
+        android:backgroundTint="#DDD7D7"
+        android:drawableLeft="@drawable/baseline_info_24"
+        android:paddingLeft="20dp"
+        android:text="Information"
+        android:textColor="#333232"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_account"
+        app:layout_constraintVertical_bias="0.028" />
+
+    <Button
+        android:id="@+id/btn_Logout"
+        android:layout_width="400dp"
+        android:layout_height="45dp"
+        android:backgroundTint="#DDD7D7"
+        android:paddingLeft="20dp"
+        android:text="Logout"
+        android:textColor="#333232"
+        android:textSize="18dp"
+        android:drawableLeft="@drawable/baseline_logout_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_information"
+        app:layout_constraintVertical_bias="0.043" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
