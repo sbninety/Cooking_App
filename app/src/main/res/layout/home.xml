@@ -6,7 +6,7 @@
     android:weightSum="14"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".Activity.MainActivity">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="96dp"
