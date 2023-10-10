@@ -1,28 +1,27 @@
 package com.example.cooking_app.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.cooking_app.R;
 
-public class WelcomeActivity extends AppCompatActivity {
+public class SignUpActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_welcome);
-        Button btnStart = findViewById(R.id.btnStart);
-        btnStart.setOnClickListener(new View.OnClickListener() {
+        setContentView(R.layout.activity_sign_up);
+
+        TextView go_to_sign_in = findViewById(R.id.go_to_sign_in);
+        go_to_sign_in.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(SignUpActivity.this,SignInActivity.class));
             }
         });
     }

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.SignInActivity">
+
+   <androidx.constraintlayout.widget.ConstraintLayout
+       android:id="@+id/constraintLayout2"
+       android:layout_width="match_parent"
+       android:layout_height="300dp"
+       android:background="@drawable/header_bg_signin"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toTopOf="parent"
+       app:layout_constraintVertical_bias="0.0">
+
+      <ImageView
+          android:id="@+id/icon_sg"
+          android:layout_width="173dp"
+          android:layout_height="142dp"
+          android:src="@drawable/chef"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          app:layout_constraintVertical_bias="0.417" />
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:fontFamily="@font/lobster"
+          android:text="Đăng nhập"
+          android:textColor="@color/white"
+          android:textSize="30sp"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/icon_sg" />
+   </androidx.constraintlayout.widget.ConstraintLayout>
+
+   <EditText
+       android:id="@+id/input_email"
+       android:layout_width="325dp"
+       android:layout_height="50dp"
+       android:padding="10dp"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintEnd_toEndOf="@+id/constraintLayout2"
+       app:layout_constraintHorizontal_bias="0.491"
+       app:layout_constraintStart_toStartOf="@+id/constraintLayout2"
+       app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+       app:layout_constraintVertical_bias="0.104"
+       android:background="@drawable/edittext_bg"
+       android:elevation="20dp"
+       android:hint="Nhập email"
+       android:drawableLeft="@drawable/baseline_email_24"
+       android:drawablePadding="10dp"/>
+
+   <EditText
+       android:id="@+id/input_password"
+       android:layout_width="325dp"
+       android:layout_height="50dp"
+       android:padding="10dp"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintEnd_toEndOf="@+id/input_email"
+       app:layout_constraintHorizontal_bias="1.0"
+       app:layout_constraintStart_toStartOf="@+id/input_email"
+       app:layout_constraintTop_toBottomOf="@+id/input_email"
+       app:layout_constraintVertical_bias="0.116"
+       android:background="@drawable/edittext_bg"
+       android:elevation="20dp"
+       android:hint="Nhập mật khẩu"
+       android:drawableLeft="@drawable/baseline_key_24"
+       android:drawablePadding="10dp"/>
+
+   <Button
+       android:id="@+id/btn_signin"
+       android:layout_width="325dp"
+       android:layout_height="50dp"
+       android:backgroundTint="@color/orange"
+       android:text="ĐĂNG NHẬP"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintEnd_toEndOf="@+id/input_password"
+       app:layout_constraintStart_toStartOf="@+id/input_password"
+       app:layout_constraintTop_toBottomOf="@+id/input_password"
+       app:layout_constraintVertical_bias="0.294" />
+   
+   <LinearLayout
+       android:layout_width="0dp"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintEnd_toEndOf="@+id/btn_signin"
+       app:layout_constraintStart_toStartOf="@+id/btn_signin"
+       app:layout_constraintTop_toBottomOf="@+id/btn_signin"
+       android:textAlignment="center"
+       android:gravity="center">
+
+   <TextView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="Bạn không có tài khoản? " />
+      <TextView
+          android:id="@+id/go_to_sign_up"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Đăng ký"
+          android:textColor="@color/red"/>
+   </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
