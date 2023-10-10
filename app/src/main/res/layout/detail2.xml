@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:background="#EF948E"
+        android:background="@color/orange"
         android:gravity="center"
         android:paddingLeft="10dp"
         android:text="Bún riêu cua"
@@ -34,6 +33,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
         android:layout_width="410dp"
         android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -60,12 +60,11 @@
                 android:layout_height="50dp"
                 android:gravity="center"
                 android:text="Bún riêu cua"
-                android:textColor="@color/red"
+                android:textColor="@color/orange"
                 android:textSize="25dp"
                 android:textStyle="bold"
                 app:layout_constraintTop_toBottomOf="@+id/imageView"
-                tools:layout_editor_absoluteX="0dp"
-                >
+                tools:layout_editor_absoluteX="0dp">
 
             </TextView>
 
@@ -78,15 +77,215 @@
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
+
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout4"
         android:layout_width="410dp"
         android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.134">
+
+        <LinearLayout
+
+            android:id="@+id/linearLayout5"
+            android:layout_width="410dp"
+            android:layout_height="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+            <TextView
+                android:id="@+id/time1"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:drawableLeft="@drawable/baseline_access_time_filled_24"
+                android:paddingLeft="25dp"
+                android:paddingBottom="25dp">
+
+            </TextView>
+
+            <TextView
+
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:padding="14dp"
+                android:paddingLeft="5dp"
+                android:text="60 phút"
+                android:textColor="@color/orange"
+                android:textSize="20dp"
+
+                ></TextView>
+
+            <TextView
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:drawableLeft="@drawable/baseline_person_24"
+                android:paddingLeft="5dp"
+
+                ></TextView>
+
+            <TextView
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:text="4 người"
+                android:textColor="@color/orange"
+                android:textSize="20dp"
+
+                ></TextView>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="410dp"
+        android:layout_height="320dp"
+        android:background="#E2E4E6"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout4"
         app:layout_constraintVertical_bias="0.0">
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="389dp"
+            android:layout_height="297dp"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.523"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.521">
+
+            <LinearLayout
+                android:id="@+id/layout7"
+                android:layout_width="390dp"
+                android:layout_height="50dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <Button
+                    android:id="@+id/btnnguyenlieu"
+                    android:layout_width="150dp"
+                    android:layout_height="53dp"
+                    android:backgroundTint="#CDC5C5"
+                    android:padding="14dp"
+                    android:text="Nguyên liệu"
+                    android:textColor="@color/black" />
+
+                <Button
+                    android:id="@+id/btncachlam"
+                    android:layout_width="108dp"
+                    android:layout_height="53dp"
+                    android:backgroundTint="@color/orange"
+                    android:padding="14dp"
+                    android:text="Cách làm"
+                    android:textColor="@color/white" />
+
+                <Button
+                    android:id="@+id/btn_ghichu"
+                    android:layout_width="100dp"
+                    android:layout_height="53dp"
+                    android:backgroundTint="@color/orange"
+                    android:padding="14dp"
+                    android:text="Ghi chú" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="356dp"
+                android:layout_height="49dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.484"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layout7"
+                app:layout_constraintVertical_bias="0.04">
+
+                <TextView
+                    android:layout_width="30dp"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:text="1"
+                    android:textColor="#219A26"
+                    android:textSize="40dp"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toBottomOf="@+id/btncachlam"
+                    tools:layout_editor_absoluteX="0dp"></TextView>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp"
+                    android:text="Nguyên liệu"
+                    android:textSize="22dp"></TextView>
+
+            </LinearLayout>
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="340dp"
+                android:layout_height="42dp"
+                android:padding="10dp"
+                android:text="500g cua đồng "
+                android:textSize="18dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.481"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+                app:layout_constraintVertical_bias="0.0">
+
+            </TextView>
+            <TextView
+                android:id="@+id/textview9"
+                android:layout_width="340dp"
+                android:layout_height="42dp"
+                android:padding="10dp"
+                android:text="50g tôm khô"
+                android:textSize="18dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.481"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView8"
+                app:layout_constraintVertical_bias="0.0">
+            </TextView>
+            <TextView
+                android:id="@+id/textview10"
+                android:layout_width="340dp"
+                android:layout_height="42dp"
+                android:padding="10dp"
+                android:text="1kg bún"
+                android:textSize="18dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.481"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textview9"
+                app:layout_constraintVertical_bias="0.0">
+            </TextView>
+            <TextView
+                android:id="@+id/textview11"
+                android:layout_width="340dp"
+                android:layout_height="42dp"
+                android:padding="10dp"
+                android:text="4 quả cà chua"
+                android:textSize="18dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.481"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textview10"
+                app:layout_constraintVertical_bias="0.0">
+            </TextView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
