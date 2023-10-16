@@ -2,4 +2,5 @@
     <string name="app_name">Cooking_App</string>
     <string name="welcome">Welcome</string>
     <string name="title_activity_sign_in">SignInActivity</string>
+    <string name="title_activity_view_recipes">view_recipes</string>
 </resources>
