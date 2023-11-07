@@ -152,7 +152,7 @@
         android:layout_height="70dp"
         android:background="#ffffff"
         android:orientation="horizontal"
-        android:weightSum="3"
+        android:weightSum="4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -227,14 +227,41 @@
                 android:layout_height="0dp"
                 android:layout_weight="2"
                 android:backgroundTint="#ffffff"
-                android:drawableTop="@drawable/bt_account" />
+                android:drawableTop="@drawable/baseline_favorite_24" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1.3"
                 android:gravity="center"
-                android:text="Tài khoản" />
+                android:text="Yêu thích" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:weightSum="4">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.5" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:backgroundTint="#ffffff"
+                android:drawableTop="@drawable/baseline_settings_24" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.3"
+                android:gravity="center"
+                android:text="Cài đặt" />
         </LinearLayout>
 
     </LinearLayout>

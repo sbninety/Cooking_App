@@ -66,7 +66,6 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
 
         public RecipeViewHolder(@NonNull View itemView) {
             super(itemView);
-
             imageRecipe = itemView.findViewById(R.id.image_recipe);
             nameRecipe = itemView.findViewById(R.id.name_recipe);
         }
