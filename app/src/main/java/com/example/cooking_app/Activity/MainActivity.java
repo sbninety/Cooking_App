@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
 import android.view.View;
@@ -15,17 +16,24 @@ import android.widget.Toast;
 
 import com.example.cooking_app.Adapter.CategoryAdapter;
 import com.example.cooking_app.Adapter.RecipeAdapter;
+import com.example.cooking_app.Adapter.SliderAdapter;
 import com.example.cooking_app.Model.Category;
 import com.example.cooking_app.Model.Recipe;
+import com.example.cooking_app.Model.Slider;
 import com.example.cooking_app.R;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import me.relex.circleindicator.CircleIndicator3;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView.Adapter adapter;
     private RecyclerView recyclerViewCategoryList;
     private  RecyclerView recyclerViewRecipeList;
     private RecipeAdapter recipeAdapter;
+    private ViewPager2 viewPager2;
+    private CircleIndicator3 circleIndicator3;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +43,21 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerViewCategory();
         recyclerViewRecipe();
+        slider();
+    }
+
+    private void slider() {
+        viewPager2 = findViewById(R.id.view_pager_2);
+        circleIndicator3 = findViewById(R.id.circle_indicator);
+        List<Slider> list = new ArrayList<>();
+        list.add(new Slider(R.drawable.dessert_orange_food_chocolate));
+        list.add(new Slider(R.drawable.dessert_orange_food_chocolate));
+        list.add(new Slider(R.drawable.dessert_orange_food_chocolate));
+        list.add(new Slider(R.drawable.dessert_orange_food_chocolate));
+        list.add(new Slider(R.drawable.dessert_orange_food_chocolate));
+        SliderAdapter sliderAdapter = new SliderAdapter(this, list);
+        viewPager2.setAdapter(sliderAdapter);
+        circleIndicator3.setViewPager(viewPager2);
     }
 
     private void recyclerViewCategory() {
@@ -43,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewCategoryList.setLayoutManager(linearLayoutManager);
 
         ArrayList<Category> categoryList = new ArrayList<>();
-        categoryList.add(new Category("title 1","dessert_orange_food_chocolate"));
+        categoryList.add(new Category("Gà xào xả ớt","dessert_orange_food_chocolate"));
         categoryList.add(new Category("title 2","dessert_orange_food_chocolate"));
         categoryList.add(new Category("title 3","dessert_orange_food_chocolate"));
         categoryList.add(new Category("title 4","dessert_orange_food_chocolate"));

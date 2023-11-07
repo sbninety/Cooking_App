@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ECEBE6"
     tools:context=".Activity.MainActivity">
 
     <ScrollView
@@ -15,12 +14,45 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@color/orange"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="270dp"
+                    android:layout_height="match_parent"
+                    android:text="Trang Chủ"
+                    android:fontFamily="@font/lobster"
+                    android:gravity="center"
+                    android:textSize="22sp"
+                    android:layout_marginLeft="50dp"
+                    android:textColor="#fff" />
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/search"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/view_pager_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp" />
+                <me.relex.circleindicator.CircleIndicator3
+                    android:id="@+id/circle_indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="-40dp"/>
+            </LinearLayout>
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -35,95 +67,24 @@
                     android:textSize="18sp"
 
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@+id/editTextText"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/view1" />
-
-                <EditText
-                    android:id="@+id/editTextText"
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:background="@drawable/search_edit_background"
-                    android:drawableStart="@drawable/search"
-                    android:drawablePadding="10dp"
-                    android:ems="10"
-                    android:hint="Search Your Recipe"
-                    android:inputType="text"
-                    android:paddingStart="20dp"
-                    android:textStyle="italic"
-                    app:layout_constraintEnd_toEndOf="@+id/constraintLayout"
-                    app:layout_constraintStart_toStartOf="@+id/constraintLayout"
-                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
-
-                <ImageView
-                    android:id="@+id/imageView2"
-                    android:layout_width="94dp"
-                    android:layout_height="61dp"
-                    android:layout_marginEnd="32dp"
-                    android:src="@drawable/profile"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView4"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/textView"
-                    app:layout_constraintVertical_bias="0.0" />
-
-                <TextView
-                    android:id="@+id/textView4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:fontFamily="@font/lobster"
-                    android:text="Make your meal"
-                    android:textColor="#000000"
-                    android:textSize="20sp"
-                    app:layout_constraintStart_toStartOf="@+id/textView"
-                    app:layout_constraintTop_toBottomOf="@id/textView" />
-
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginTop="32dp"
-                    android:fontFamily="@font/lobster"
-                    android:text="Hi Son"
-                    android:textColor="#FF3D00"
-                    android:textSize="20sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/constraintLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginEnd="32dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView4">
-
-                    <ImageView
-                        android:id="@+id/imageView3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="150dp"
-                        android:scaleType="fitStart"
-                        android:src="@drawable/banner"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <TextView
                     android:id="@+id/textView5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="Categories"
+                    android:background="#F0EAEC"
+                    android:layout_width="match_parent"
+                    android:paddingLeft="20dp"
+                    android:layout_height="35dp"
+                    android:gravity="center_vertical"
+                    android:text="Món ăn miền Bắc"
+                    android:drawableRight="@drawable/ic_arrow_right"
+                    android:paddingRight="20dp"
                     android:textColor="#000000"
-                    android:textSize="18sp"
+                    android:textSize="13sp"
                     android:textStyle="bold"
-
-                    app:layout_constraintStart_toStartOf="@+id/editTextText"
-                    app:layout_constraintTop_toBottomOf="@+id/editTextText" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/view2"
