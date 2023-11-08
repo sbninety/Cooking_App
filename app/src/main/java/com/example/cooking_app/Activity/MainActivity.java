@@ -53,14 +53,14 @@ public class MainActivity extends AppCompatActivity {
         listMonAnMienNam.setLayoutManager(linearLayoutManager);
 
         ArrayList<Recipe> recipeList = new ArrayList<>();
-        recipeList.add(new Recipe("Gà xào xả ớt",R.drawable.dessert_orange_food_chocolate));
-        recipeList.add(new Recipe("title 2",R.drawable.dessert_orange_food_chocolate));
-        recipeList.add(new Recipe("title 3",R.drawable.dessert_orange_food_chocolate));
-        recipeList.add(new Recipe("title 4",R.drawable.dessert_orange_food_chocolate));
-        recipeList.add(new Recipe("title 5",R.drawable.dessert_orange_food_chocolate));
-        recipeList.add(new Recipe("title 6",R.drawable.dessert_orange_food_chocolate));
-        recipeList.add(new Recipe("title 7",R.drawable.dessert_orange_food_chocolate));
-        recipeList.add(new Recipe("title 8",R.drawable.dessert_orange_food_chocolate));
+        recipeList.add(new Recipe("Gà xào xả ớt",R.drawable.dessert_orange_food_chocolate,""));
+        recipeList.add(new Recipe("title 2",R.drawable.dessert_orange_food_chocolate,""));
+        recipeList.add(new Recipe("title 3",R.drawable.dessert_orange_food_chocolate,""));
+        recipeList.add(new Recipe("title 4",R.drawable.dessert_orange_food_chocolate,""));
+        recipeList.add(new Recipe("title 5",R.drawable.dessert_orange_food_chocolate,""));
+        recipeList.add(new Recipe("title 6",R.drawable.dessert_orange_food_chocolate,""));
+        recipeList.add(new Recipe("title 7",R.drawable.dessert_orange_food_chocolate,""));
+        recipeList.add(new Recipe("title 8",R.drawable.dessert_orange_food_chocolate,""));
 
         adapter = new RecipeAdapter(this,recipeList);
         listMonAnMienNam.setAdapter(adapter);
@@ -72,14 +72,14 @@ public class MainActivity extends AppCompatActivity {
         listMonAnMienTrung.setLayoutManager(linearLayoutManager);
 
         ArrayList<Recipe> recipeList = new ArrayList<>();
-        recipeList.add(new Recipe("Gà xào xả ớt",R.drawable.dessert_orange_food_chocolate));
-        recipeList.add(new Recipe("title 2",R.drawable.dessert_orange_food_chocolate));
-        recipeList.add(new Recipe("title 3",R.drawable.dessert_orange_food_chocolate));
-        recipeList.add(new Recipe("title 4",R.drawable.dessert_orange_food_chocolate));
-        recipeList.add(new Recipe("title 5",R.drawable.dessert_orange_food_chocolate));
-        recipeList.add(new Recipe("title 6",R.drawable.dessert_orange_food_chocolate));
-        recipeList.add(new Recipe("title 7",R.drawable.dessert_orange_food_chocolate));
-        recipeList.add(new Recipe("title 8",R.drawable.dessert_orange_food_chocolate));
+        recipeList.add(new Recipe("Gà xào xả ớt",R.drawable.dessert_orange_food_chocolate,""));
+        recipeList.add(new Recipe("title 2",R.drawable.dessert_orange_food_chocolate,""));
+        recipeList.add(new Recipe("title 3",R.drawable.dessert_orange_food_chocolate,""));
+        recipeList.add(new Recipe("title 4",R.drawable.dessert_orange_food_chocolate,""));
+        recipeList.add(new Recipe("title 5",R.drawable.dessert_orange_food_chocolate,""));
+        recipeList.add(new Recipe("title 6",R.drawable.dessert_orange_food_chocolate,""));
+        recipeList.add(new Recipe("title 7",R.drawable.dessert_orange_food_chocolate,""));
+        recipeList.add(new Recipe("title 8",R.drawable.dessert_orange_food_chocolate,""));
 
         adapter = new RecipeAdapter(this,recipeList);
         listMonAnMienTrung.setAdapter(adapter);
@@ -105,14 +105,14 @@ public class MainActivity extends AppCompatActivity {
         listMonAnMienBac.setLayoutManager(linearLayoutManager);
 
         ArrayList<Recipe> recipeList = new ArrayList<>();
-        recipeList.add(new Recipe("Gà xào xả ớt",R.drawable.dessert_orange_food_chocolate));
-        recipeList.add(new Recipe("title 2",R.drawable.dessert_orange_food_chocolate));
-        recipeList.add(new Recipe("title 3",R.drawable.dessert_orange_food_chocolate));
-        recipeList.add(new Recipe("title 4",R.drawable.dessert_orange_food_chocolate));
-        recipeList.add(new Recipe("title 5",R.drawable.dessert_orange_food_chocolate));
-        recipeList.add(new Recipe("title 6",R.drawable.dessert_orange_food_chocolate));
-        recipeList.add(new Recipe("title 7",R.drawable.dessert_orange_food_chocolate));
-        recipeList.add(new Recipe("title 8",R.drawable.dessert_orange_food_chocolate));
+        recipeList.add(new Recipe("Gà xào xả ớt",R.drawable.dessert_orange_food_chocolate,""));
+        recipeList.add(new Recipe("title 2",R.drawable.dessert_orange_food_chocolate,""));
+        recipeList.add(new Recipe("title 3",R.drawable.dessert_orange_food_chocolate,""));
+        recipeList.add(new Recipe("title 4",R.drawable.dessert_orange_food_chocolate,""));
+        recipeList.add(new Recipe("title 5",R.drawable.dessert_orange_food_chocolate,""));
+        recipeList.add(new Recipe("title 6",R.drawable.dessert_orange_food_chocolate,""));
+        recipeList.add(new Recipe("title 7",R.drawable.dessert_orange_food_chocolate,""));
+        recipeList.add(new Recipe("title 8",R.drawable.dessert_orange_food_chocolate,""));
 
         adapter = new RecipeAdapter(this,recipeList);
         listMonAnMienBac.setAdapter(adapter);
