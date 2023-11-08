@@ -1,44 +1,41 @@
 package com.example.cooking_app.Adapter;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 
-import com.example.cooking_app.Activity.MainActivity;
+import com.example.cooking_app.Activity.DetailRecipeActivity;
+import com.example.cooking_app.Activity.SignInActivity;
 import com.example.cooking_app.Model.Recipe;
 import com.example.cooking_app.R;
 
-import android.content.Context;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder> {
 
-    private Context context;
     private ArrayList<Recipe> recipes;
+    private Context context;
 
-    public RecipeAdapter(Context context) {
+    public RecipeAdapter(Context context,ArrayList<Recipe> recipes) {
         this.context = context;
-    }
-
-    public void setData(ArrayList<Recipe> recipes)
-    {
         this.recipes = recipes;
-        notifyDataSetChanged();
     }
 
     @NonNull
     @Override
-    public RecipeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_recipes, parent, false);
-        return new  RecipeViewHolder(view);
+    public RecipeAdapter.RecipeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.viewholder_category,parent,false);
+        return new RecipeViewHolder(inflate);
     }
 
     @Override
@@ -50,8 +47,20 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
         }
         holder.imageRecipe.setImageResource(recipe.getImage());
         holder.nameRecipe.setText(recipe.getNameRecipe());
+        holder.mainLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClickGoToDetail(recipe);
+            }
+        });
     }
-
+    private void onClickGoToDetail(Recipe recipe){
+        Intent intent = new Intent(context, DetailRecipeActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("object_recipe", recipe);
+        intent.putExtras(bundle);
+        context.startActivity(intent);
+    }
     @Override
     public int getItemCount() {
         if (recipes != null)
@@ -60,14 +69,14 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
     }
 
     public class RecipeViewHolder extends RecyclerView.ViewHolder {
-        private ImageView imageRecipe;
-        private TextView nameRecipe;
-
-
+        TextView nameRecipe;
+        ImageView imageRecipe;
+        ConstraintLayout mainLayout;
         public RecipeViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageRecipe = itemView.findViewById(R.id.image_recipe);
-            nameRecipe = itemView.findViewById(R.id.name_recipe);
+            nameRecipe = itemView.findViewById(R.id.categoryName);
+            imageRecipe = itemView.findViewById(R.id.categoryImage);
+            mainLayout = itemView.findViewById(R.id.mainLayout);
         }
     }
 }

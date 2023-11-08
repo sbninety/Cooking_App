@@ -1,6 +1,8 @@
 package com.example.cooking_app.Model;
 
-public class Recipe {
+import java.io.Serializable;
+
+public class Recipe implements Serializable {
     private String nameRecipe;
     private int image;
 

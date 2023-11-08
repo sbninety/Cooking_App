@@ -19,6 +19,9 @@
             android:name=".Activity.CategoryActivity"
             android:exported="false" />
         <activity
+            android:name=".Activity.DetailRecipeActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activity.SignUpActivity"
             android:exported="true" />
         <activity
