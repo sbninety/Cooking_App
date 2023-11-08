@@ -231,6 +231,7 @@
                     android:textSize="22dp"></TextView>
 
             </LinearLayout>
+
             <TextView
                 android:id="@+id/textView8"
                 android:layout_width="340dp"
@@ -240,12 +241,13 @@
                 android:textSize="18dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.481"
+                app:layout_constraintHorizontal_bias="0.489"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
                 app:layout_constraintVertical_bias="0.0">
 
             </TextView>
+
             <TextView
                 android:id="@+id/textview9"
                 android:layout_width="340dp"
@@ -276,20 +278,6 @@
             </TextView>
             <TextView
                 android:id="@+id/textview11"
-                android:layout_width="340dp"
-                android:layout_height="42dp"
-                android:padding="10dp"
-                android:text="4 quả cà chua"
-                android:textSize="18dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.481"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textview10"
-                app:layout_constraintVertical_bias="0.0">
-            </TextView>
-            <TextView
-                android:id="@+id/textview12"
                 android:layout_width="340dp"
                 android:layout_height="42dp"
                 android:padding="10dp"
