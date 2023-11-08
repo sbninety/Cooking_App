@@ -4,6 +4,8 @@ public class Recipe {
     private String nameRecipe;
     private int image;
 
+    private String category;
+
     public String getNameRecipe() {
         return nameRecipe;
     }
@@ -20,8 +22,16 @@ public class Recipe {
         this.image = image;
     }
 
-    public Recipe(String nameRecipe, int image) {
+    public String getCategory() {
+        return category;
+    }
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public Recipe(String nameRecipe, int image, String category) {
         this.nameRecipe = nameRecipe;
         this.image = image;
+        this.category = category;
     }
 }

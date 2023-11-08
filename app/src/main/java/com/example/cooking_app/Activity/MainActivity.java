@@ -6,11 +6,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.GridView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -40,8 +43,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        LinearLayout btnStart = findViewById(R.id.bt_meal);
+        btnStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, CategoryActivity.class);
+                startActivity(intent);
+            }
+        });
 
-        recyclerViewCategory();
         recyclerViewRecipe();
         slider();
     }
@@ -60,24 +70,6 @@ public class MainActivity extends AppCompatActivity {
         circleIndicator3.setViewPager(viewPager2);
     }
 
-    private void recyclerViewCategory() {
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
-        recyclerViewCategoryList = findViewById(R.id.view1);
-        recyclerViewCategoryList.setLayoutManager(linearLayoutManager);
-
-        ArrayList<Category> categoryList = new ArrayList<>();
-        categoryList.add(new Category("Gà xào xả ớt","dessert_orange_food_chocolate"));
-        categoryList.add(new Category("title 2","dessert_orange_food_chocolate"));
-        categoryList.add(new Category("title 3","dessert_orange_food_chocolate"));
-        categoryList.add(new Category("title 4","dessert_orange_food_chocolate"));
-        categoryList.add(new Category("title 5","dessert_orange_food_chocolate"));
-        categoryList.add(new Category("title 6","dessert_orange_food_chocolate"));
-        categoryList.add(new Category("title 7","dessert_orange_food_chocolate"));
-        categoryList.add(new Category("title 8","dessert_orange_food_chocolate"));
-
-        adapter = new CategoryAdapter(categoryList);
-        recyclerViewCategoryList.setAdapter(adapter);
-    }
 
     private void recyclerViewRecipe() {
 
@@ -88,13 +80,13 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewRecipeList.setLayoutManager(gridLayoutManager);
 
         ArrayList<Recipe> recipeList = new ArrayList<>();
-        recipeList.add(new Recipe("title 1",R.drawable.anh3));
-        recipeList.add(new Recipe("title 1",R.drawable.anh3));
-        recipeList.add(new Recipe("title 1",R.drawable.anh3));
-        recipeList.add(new Recipe("title 1",R.drawable.anh3));
-        recipeList.add(new Recipe("title 1",R.drawable.anh3));
-        recipeList.add(new Recipe("title 1",R.drawable.anh3));
-        recipeList.add(new Recipe("title 1",R.drawable.anh3));
+        recipeList.add(new Recipe("title 1",R.drawable.anh3, ""));
+        recipeList.add(new Recipe("title 1",R.drawable.anh3, ""));
+        recipeList.add(new Recipe("title 1",R.drawable.anh3, ""));
+        recipeList.add(new Recipe("title 1",R.drawable.anh3, ""));
+        recipeList.add(new Recipe("title 1",R.drawable.anh3, ""));
+        recipeList.add(new Recipe("title 1",R.drawable.anh3, ""));
+        recipeList.add(new Recipe("title 1",R.drawable.anh3, ""));
         recipeAdapter.setData(recipeList);
         recyclerViewRecipeList.setAdapter(recipeAdapter);
     }

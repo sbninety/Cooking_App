@@ -3,10 +3,7 @@ package com.example.cooking_app.Adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 
-import com.example.cooking_app.Activity.MainActivity;
-import com.example.cooking_app.Model.Category;
 import com.example.cooking_app.Model.Recipe;
 import com.example.cooking_app.R;
 
@@ -18,54 +15,59 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class ActivityCategoryAdapter extends RecyclerView.Adapter<ActivityCategoryAdapter.RecipeViewHolder> {
+public class RecipeByCategoryAdapter extends RecyclerView.Adapter<RecipeByCategoryAdapter.RecipeViewHolder> {
 
     private Context context;
-    private ArrayList<Category> categories;
+    private ArrayList<Recipe> recipes;
 
-    public ActivityCategoryAdapter(Context context) {
+    public RecipeByCategoryAdapter(Context context) {
         this.context = context;
     }
 
-    public void setData(ArrayList<Category> categories)
+    public void setData(ArrayList<Recipe> recipes)
     {
-        this.categories = categories;
+        this.recipes = recipes;
         notifyDataSetChanged();
     }
 
     @NonNull
     @Override
     public RecipeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_categories_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_food_by_category_item, parent, false);
         return new  RecipeViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecipeViewHolder holder, int position) {
-        Category category = categories.get(position);
-        if (category == null)
+        Recipe recipe = recipes.get(position);
+        if (recipe == null)
         {
             return;
         }
-        holder.nameCategory.setText(category.getTitle());
+        holder.imageRecipe.setImageResource(recipe.getImage());
+        holder.nameRecipe.setText(recipe.getNameRecipe());
+        holder.categoryName.setText((recipe.getNameRecipe()));
     }
 
     @Override
     public int getItemCount() {
-        if (categories != null)
-            return categories.size();
+        if (recipes != null)
+            return recipes.size();
         return 0;
     }
 
     public class RecipeViewHolder extends RecyclerView.ViewHolder {
-        private TextView nameCategory;
+        private ImageView imageRecipe;
+        private TextView nameRecipe;
 
+        private TextView categoryName;
 
         public RecipeViewHolder(@NonNull View itemView) {
             super(itemView);
-            nameCategory = itemView.findViewById(R.id.categoryName);
+            imageRecipe = itemView.findViewById(R.id.recipeImage);
+            nameRecipe = itemView.findViewById(R.id.recipeName);
+            categoryName = itemView.findViewById(R.id.categoryName);
         }
     }
 }

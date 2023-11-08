@@ -2,16 +2,12 @@ package com.example.cooking_app.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
-import com.example.cooking_app.Adapter.ActivityCategoryAdapter;
 import com.example.cooking_app.Adapter.CategoryAdapter;
-import com.example.cooking_app.Adapter.RecipeAdapter;
 import com.example.cooking_app.Model.Category;
-import com.example.cooking_app.Model.Recipe;
 import com.example.cooking_app.R;
 
 import java.util.ArrayList;
@@ -21,7 +17,7 @@ public class CategoryActivity extends AppCompatActivity {
     private RecyclerView.Adapter adapter;
     private RecyclerView recyclerViewCategoryList;
     private  RecyclerView recyclerViewRecipeList;
-    private ActivityCategoryAdapter ActivityCategoryAdapter;
+    private CategoryAdapter categoryAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +28,7 @@ public class CategoryActivity extends AppCompatActivity {
 
     private void recyclerViewCategory() {
         recyclerViewRecipeList = findViewById(R.id.recycler_view);
-        ActivityCategoryAdapter = new ActivityCategoryAdapter(this);
+        categoryAdapter = new CategoryAdapter(this);
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this,1);
         recyclerViewRecipeList.setLayoutManager(gridLayoutManager);
@@ -46,7 +42,7 @@ public class CategoryActivity extends AppCompatActivity {
         categoryList.add(new Category("title 6","dessert_orange_food_chocolate"));
         categoryList.add(new Category("title 7","dessert_orange_food_chocolate"));
         categoryList.add(new Category("title 8","dessert_orange_food_chocolate"));
-        ActivityCategoryAdapter.setData(categoryList);
-        recyclerViewRecipeList.setAdapter(ActivityCategoryAdapter);
+        categoryAdapter.setData(categoryList);
+        recyclerViewRecipeList.setAdapter(categoryAdapter);
     }
 }
