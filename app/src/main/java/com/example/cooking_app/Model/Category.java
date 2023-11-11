@@ -1,27 +1,30 @@
 package com.example.cooking_app.Model;
 
 public class Category {
-    private String title;
-    private String image;
+    private int id;
+    private String name;
 
-    public Category(String title, String image) {
-        this.title = title;
-        this.image = image;
+    public Category() {
     }
 
-    public String getTitle() {
-        return title;
+    public int getId() {
+        return id;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getImage() {
-        return image;
+    public String getName() {
+        return name;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Category(int id, String name) {
+        this.id = id;
+        this.name = name;
     }
 }

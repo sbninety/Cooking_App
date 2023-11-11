@@ -3,10 +3,17 @@ package com.example.cooking_app.Model;
 import java.io.Serializable;
 
 public class Recipe implements Serializable {
+    private int id;
     private String nameRecipe;
-    private int image;
+    private String imageRecipe;
 
-    private String category;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getNameRecipe() {
         return nameRecipe;
@@ -16,24 +23,20 @@ public class Recipe implements Serializable {
         this.nameRecipe = nameRecipe;
     }
 
-    public int getImage() {
-        return image;
+    public String getImageRecipe() {
+        return imageRecipe;
     }
 
-    public void setImage(int image) {
-        this.image = image;
+    public void setImageRecipe(String imageRecipe) {
+        this.imageRecipe = imageRecipe;
     }
 
-    public String getCategory() {
-        return category;
-    }
-    public void setCategory(String category) {
-        this.category = category;
+    public Recipe() {
     }
 
-    public Recipe(String nameRecipe, int image, String category) {
+    public Recipe(int id, String nameRecipe, String imageRecipe) {
+        this.id = id;
         this.nameRecipe = nameRecipe;
-        this.image = image;
-        this.category = category;
+        this.imageRecipe = imageRecipe;
     }
 }

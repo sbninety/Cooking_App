@@ -44,7 +44,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Recipe
         {
             return;
         }
-        holder.nameCategory.setText(category.getTitle());
+        holder.nameCategory.setText(category.getName());
     }
 
     @Override

@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bumptech.glide.Glide;
 import com.example.cooking_app.Activity.DetailRecipeActivity;
 import com.example.cooking_app.Activity.SignInActivity;
 import com.example.cooking_app.Model.Recipe;
@@ -45,7 +46,8 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
         {
             return;
         }
-        holder.imageRecipe.setImageResource(recipe.getImage());
+        int drawableReourceId = holder.itemView.getContext().getResources().getIdentifier(recipe.getImageRecipe(),"drawable",holder.itemView.getContext().getPackageName());
+        Glide.with(holder.itemView.getContext()).load(drawableReourceId).into(holder.imageRecipe);
         holder.nameRecipe.setText(recipe.getNameRecipe());
         holder.mainLayout.setOnClickListener(new View.OnClickListener() {
             @Override

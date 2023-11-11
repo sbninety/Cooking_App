@@ -20,7 +20,8 @@
             android:exported="false" />
         <activity
             android:name=".Activity.DetailRecipeActivity"
-            android:exported="false" />
+            android:exported="false">
+        </activity>
         <activity
             android:name=".Activity.SignUpActivity"
             android:exported="true" />

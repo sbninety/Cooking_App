@@ -37,14 +37,15 @@ public class ListFoodByCategoryActivity extends AppCompatActivity {
         recyclerViewRecipeList.setLayoutManager(gridLayoutManager);
 
         ArrayList<Recipe> recipeList = new ArrayList<>();
-        recipeList.add(new Recipe("title 1",R.drawable.anh3, "Mien Bac"));
-        recipeList.add(new Recipe("title 2",R.drawable.anh3, "Mien Nam"));
-        recipeList.add(new Recipe("title 3",R.drawable.anh3, "Mien Nam"));
-        recipeList.add(new Recipe("title 4",R.drawable.anh3, "Mien Nam"));
-        recipeList.add(new Recipe("title 5",R.drawable.anh3, "Mien Nam"));
-        recipeList.add(new Recipe("title 6",R.drawable.anh3, "Mien Nam"));
-        recipeList.add(new Recipe("title 7",R.drawable.anh3, "Mien Nam"));
-        recipeList.add(new Recipe("title 8",R.drawable.anh3, "Mien Nam"));
+//        recipeList.add(new Recipe("title 1",R.drawable.anh3, "Mien Bac"));
+//        recipeList.add(new Recipe("title 2",R.drawable.anh3, "Mien Nam"));
+//        recipeList.add(new Recipe("title 3",R.drawable.anh3, "Mien Nam"));
+//        recipeList.add(new Recipe("title 4",R.drawable.anh3, "Mien Nam"));
+//        recipeList.add(new Recipe("title 5",R.drawable.anh3, "Mien Nam"));
+//        recipeList.add(new Recipe("title 6",R.drawable.anh3, "Mien Nam"));
+//        recipeList.add(new Recipe("title 7",R.drawable.anh3, "Mien Nam"));
+//        recipeList.add(new Recipe("title 8",R.drawable.anh3, "Mien Nam"));
+        recipeList.add(new Recipe(1,"Ga xao xa ot","dessert_orange_food_chocolate"));
         recipeByCategoryAdapter.setData(recipeList);
         recyclerViewRecipeList.setAdapter(recipeByCategoryAdapter);
     }
