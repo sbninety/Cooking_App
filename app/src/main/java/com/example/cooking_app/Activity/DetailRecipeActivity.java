@@ -10,9 +10,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.cooking_app.Adapter.IngredientAdapter;
 import com.example.cooking_app.Adapter.InstructionAdapter;
+import com.example.cooking_app.Database.DBHandler;
 import com.example.cooking_app.Model.Ingredient;
+import com.example.cooking_app.Model.IngredientDetail;
 import com.example.cooking_app.Model.Instruction;
 import com.example.cooking_app.Model.Recipe;
 import com.example.cooking_app.R;
@@ -27,31 +30,33 @@ public class DetailRecipeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detail);
-//        Bundle bundle = getIntent().getExtras();
-//        if(bundle == null){
-//            return;
-//        }
-//        Recipe recipe = (Recipe) bundle.get("object_recipe");
-//        TextView recipeName = findViewById(R.id.textView);
-//        ImageView recipeImage = findViewById(R.id.imageView);
-//        recipeName.setText(recipe.getNameRecipe());
-//        recipeImage.setImageResource(recipe.getImage());
-        NguyenLieu();
-        CongThuc();
+        Bundle bundle = getIntent().getExtras();
+        if(bundle == null){
+            return;
+        }
+        Recipe recipe = (Recipe) bundle.get("object_recipe");
+        TextView recipeName1 = findViewById(R.id.name1);
+        recipeName1.setText(recipe.getNameRecipe());
+        TextView recipeName2 = findViewById(R.id.name2);
+        recipeName2.setText(recipe.getNameRecipe());
+        TextView time = findViewById(R.id.time);
+        time.setText(recipe.getTimeRecipe());
+        TextView people = findViewById(R.id.people);
+        people.setText(recipe.getPeopleRecipe() + " người");
+        ImageView imageRecipe = findViewById(R.id.imageRecipe);
+        int drawableReourceId = getResources().getIdentifier(recipe.getImageRecipe(),"drawable",getPackageName());
+        Glide.with(this).load(drawableReourceId).into(imageRecipe);
+        NguyenLieu(recipe);
+        CongThuc(recipe);
     }
 
-    private void CongThuc() {
+    private void CongThuc(Recipe recipe) {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
         listInstruction = findViewById(R.id.list_instruction);
         listInstruction.setLayoutManager(linearLayoutManager);
         ArrayList<Instruction> instructionList = new ArrayList<>();
-        instructionList.add(new Instruction(1, "Hành khô các bạn bóc vỏ sau đó rửa sạch rồi băm nhỏ"));
-        instructionList.add(new Instruction(3, "Không biết"));
-        instructionList.add(new Instruction(4, "Không biết"));
-        instructionList.add(new Instruction(5, "Không biết"));
-        instructionList.add(new Instruction(6, "Không biết"));
-        instructionList.add(new Instruction(7, "Không biết"));
-        instructionList.add(new Instruction(2, "Mộc nhĩ ngâm vào nước để nở rồi rửa sạch sau đó cắt nhỏ"));
+        DBHandler dbHandler = new DBHandler(this);
+        instructionList = dbHandler.getAllInstruction(recipe.getId());
         for(int i=0;i<instructionList.size()-1;i++){
             for(int j=i+1;j<instructionList.size();j++){
                 if(instructionList.get(i).getStep() > instructionList.get(j).getStep()){
@@ -66,20 +71,14 @@ public class DetailRecipeActivity extends AppCompatActivity {
 
     }
 
-    private void NguyenLieu() {
+    private void NguyenLieu(Recipe recipe) {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
         listIngredient = findViewById(R.id.list_ingredient);
         listIngredient.setLayoutManager(linearLayoutManager);
-        ArrayList<Ingredient> ingredientList = new ArrayList<>();
-        ingredientList.add(new Ingredient("thịt heo xay hoặc băm","200g"));
-        ingredientList.add(new Ingredient("đậu phụ chiên","100g"));
-        ingredientList.add(new Ingredient("hành",""));
-        ingredientList.add(new Ingredient("gừng",""));
-        ingredientList.add(new Ingredient("nước tương","45ml"));
-        ingredientList.add(new Ingredient("hạt nêm",""));
-        ingredientList.add(new Ingredient("đường",""));
-        ingredientList.add(new Ingredient("bột bắp","1 thìa cafe"));
-        adapter = new IngredientAdapter(ingredientList,this);
+        ArrayList<IngredientDetail> ingredientDetails = new ArrayList<>();
+        DBHandler dbHandler = new DBHandler(this);
+        ingredientDetails = dbHandler.getAllRecipeIngre(recipe.getId());
+        adapter = new IngredientAdapter(ingredientDetails,this);
         listIngredient.setAdapter(adapter);
     }
 }

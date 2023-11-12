@@ -10,16 +10,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cooking_app.Model.Ingredient;
+import com.example.cooking_app.Model.IngredientDetail;
 import com.example.cooking_app.R;
 
 import java.util.ArrayList;
 
 public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.IngredientViewHolder> {
-    private ArrayList<Ingredient> ingredients;
+    private ArrayList<IngredientDetail> ingredientDetails;
     private Context context;
 
-    public IngredientAdapter(ArrayList<Ingredient> ingredients, Context context) {
-        this.ingredients = ingredients;
+    public IngredientAdapter(ArrayList<IngredientDetail> ingredientDetails, Context context) {
+        this.ingredientDetails = ingredientDetails;
         this.context = context;
     }
 
@@ -32,17 +33,17 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.In
 
     @Override
     public void onBindViewHolder(@NonNull IngredientViewHolder holder, int position) {
-        Ingredient ingredient = ingredients.get(position);
-        if(ingredient == null){
+        IngredientDetail ingredientDetail = ingredientDetails.get(position);
+        if(ingredientDetail == null){
             return;
         }
-        holder.name_ingredient.setText("- " + ingredient.getName() + " " + ingredient.getDecription());
+        holder.name_ingredient.setText("- " + ingredientDetail.getIngredient().getName() + " " + ingredientDetail.getDecription());
     }
 
     @Override
     public int getItemCount() {
-        if(ingredients != null){
-            return ingredients.size();
+        if(ingredientDetails != null){
+            return ingredientDetails.size();
         }
         return 0;
     }

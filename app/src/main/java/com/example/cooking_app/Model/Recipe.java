@@ -6,6 +6,24 @@ public class Recipe implements Serializable {
     private int id;
     private String nameRecipe;
     private String imageRecipe;
+    private String timeRecipe;
+    private String peopleRecipe;
+
+    public String getTimeRecipe() {
+        return timeRecipe;
+    }
+
+    public void setTimeRecipe(String timeRecipe) {
+        this.timeRecipe = timeRecipe;
+    }
+
+    public String getPeopleRecipe() {
+        return peopleRecipe;
+    }
+
+    public void setPeopleRecipe(String peopleRecipe) {
+        this.peopleRecipe = peopleRecipe;
+    }
 
     public int getId() {
         return id;
@@ -34,9 +52,11 @@ public class Recipe implements Serializable {
     public Recipe() {
     }
 
-    public Recipe(int id, String nameRecipe, String imageRecipe) {
+    public Recipe(int id, String nameRecipe, String imageRecipe, String timeRecipe, String peopleRecipe) {
         this.id = id;
         this.nameRecipe = nameRecipe;
         this.imageRecipe = imageRecipe;
+        this.timeRecipe = timeRecipe;
+        this.peopleRecipe = peopleRecipe;
     }
 }

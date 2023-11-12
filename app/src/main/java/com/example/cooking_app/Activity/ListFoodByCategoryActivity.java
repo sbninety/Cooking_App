@@ -5,9 +5,11 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.example.cooking_app.Adapter.CategoryAdapter;
 import com.example.cooking_app.Adapter.RecipeByCategoryAdapter;
+import com.example.cooking_app.Database.DBHandler;
 import com.example.cooking_app.Model.Category;
 import com.example.cooking_app.Model.Recipe;
 import com.example.cooking_app.R;
@@ -15,9 +17,6 @@ import com.example.cooking_app.R;
 import java.util.ArrayList;
 
 public class ListFoodByCategoryActivity extends AppCompatActivity {
-
-    private RecyclerView.Adapter adapter;
-    private RecyclerView recyclerViewCategoryList;
     private  RecyclerView recyclerViewRecipeList;
     private RecipeByCategoryAdapter recipeByCategoryAdapter;
 
@@ -25,11 +24,17 @@ public class ListFoodByCategoryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_food_by_category);
-
-        recyclerViewGetRecipesByCategory();
+        Bundle bundle = getIntent().getExtras();
+        if(bundle == null){
+            return;
+        }
+        Category category = (Category) bundle.get("object_category");
+        TextView nameCat = findViewById(R.id.nameCategory);
+        nameCat.setText(category.getName());
+        recyclerViewGetRecipesByCategory(category);
     }
 
-    private void recyclerViewGetRecipesByCategory() {
+    private void recyclerViewGetRecipesByCategory(Category category) {
         recyclerViewRecipeList = findViewById(R.id.recycler_view_recipe_by_category);
         recipeByCategoryAdapter = new RecipeByCategoryAdapter(this);
 
@@ -37,15 +42,8 @@ public class ListFoodByCategoryActivity extends AppCompatActivity {
         recyclerViewRecipeList.setLayoutManager(gridLayoutManager);
 
         ArrayList<Recipe> recipeList = new ArrayList<>();
-//        recipeList.add(new Recipe("title 1",R.drawable.anh3, "Mien Bac"));
-//        recipeList.add(new Recipe("title 2",R.drawable.anh3, "Mien Nam"));
-//        recipeList.add(new Recipe("title 3",R.drawable.anh3, "Mien Nam"));
-//        recipeList.add(new Recipe("title 4",R.drawable.anh3, "Mien Nam"));
-//        recipeList.add(new Recipe("title 5",R.drawable.anh3, "Mien Nam"));
-//        recipeList.add(new Recipe("title 6",R.drawable.anh3, "Mien Nam"));
-//        recipeList.add(new Recipe("title 7",R.drawable.anh3, "Mien Nam"));
-//        recipeList.add(new Recipe("title 8",R.drawable.anh3, "Mien Nam"));
-        recipeList.add(new Recipe(1,"Ga xao xa ot","dessert_orange_food_chocolate"));
+        DBHandler dbHandler = new DBHandler(this);
+        recipeList = dbHandler.listRecipebyCat(category.getId());
         recipeByCategoryAdapter.setData(recipeList);
         recyclerViewRecipeList.setAdapter(recipeByCategoryAdapter);
     }

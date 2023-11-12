@@ -1,12 +1,15 @@
 package com.example.cooking_app.Model;
 
 public class Ingredient {
+    private int id;
     private String Name;
-    private String Decription;
 
-    public Ingredient(String name, String decription) {
-        Name = name;
-        Decription = decription;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -17,11 +20,11 @@ public class Ingredient {
         Name = name;
     }
 
-    public String getDecription() {
-        return Decription;
+    public Ingredient() {
     }
 
-    public void setDecription(String decription) {
-        Decription = decription;
+    public Ingredient(int id, String name) {
+        this.id = id;
+        Name = name;
     }
 }

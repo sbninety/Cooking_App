@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
 import com.example.cooking_app.Activity.DetailRecipeActivity;
-import com.example.cooking_app.Activity.SignInActivity;
 import com.example.cooking_app.Model.Recipe;
 import com.example.cooking_app.R;
 
@@ -35,7 +34,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
     @NonNull
     @Override
     public RecipeAdapter.RecipeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.viewholder_category,parent,false);
+        View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.recipe_item,parent,false);
         return new RecipeViewHolder(inflate);
     }
 
@@ -76,8 +75,8 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
         ConstraintLayout mainLayout;
         public RecipeViewHolder(@NonNull View itemView) {
             super(itemView);
-            nameRecipe = itemView.findViewById(R.id.categoryName);
-            imageRecipe = itemView.findViewById(R.id.categoryImage);
+            nameRecipe = itemView.findViewById(R.id.recipeName);
+            imageRecipe = itemView.findViewById(R.id.recipeImage);
             mainLayout = itemView.findViewById(R.id.mainLayout);
         }
     }

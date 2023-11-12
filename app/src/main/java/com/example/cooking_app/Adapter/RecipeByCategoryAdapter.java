@@ -1,10 +1,13 @@
 package com.example.cooking_app.Adapter;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
+import com.example.cooking_app.Activity.DetailRecipeActivity;
 import com.example.cooking_app.Model.Recipe;
 import com.example.cooking_app.R;
 
@@ -13,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -35,7 +39,7 @@ public class RecipeByCategoryAdapter extends RecyclerView.Adapter<RecipeByCatego
     @NonNull
     @Override
     public RecipeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_food_by_category_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recipe_item, parent, false);
         return new  RecipeViewHolder(view);
     }
 
@@ -49,9 +53,20 @@ public class RecipeByCategoryAdapter extends RecyclerView.Adapter<RecipeByCatego
         int drawableReourceId = holder.itemView.getContext().getResources().getIdentifier(recipe.getImageRecipe(),"drawable",holder.itemView.getContext().getPackageName());
         Glide.with(holder.itemView.getContext()).load(drawableReourceId).into(holder.imageRecipe);
         holder.nameRecipe.setText(recipe.getNameRecipe());
-        holder.categoryName.setText((recipe.getNameRecipe()));
+        holder.mainLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClickGoToDetail(recipe);
+            }
+        });
     }
-
+    private void onClickGoToDetail(Recipe recipe){
+        Intent intent = new Intent(context, DetailRecipeActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("object_recipe", recipe);
+        intent.putExtras(bundle);
+        context.startActivity(intent);
+    }
     @Override
     public int getItemCount() {
         if (recipes != null)
@@ -62,14 +77,13 @@ public class RecipeByCategoryAdapter extends RecyclerView.Adapter<RecipeByCatego
     public class RecipeViewHolder extends RecyclerView.ViewHolder {
         private ImageView imageRecipe;
         private TextView nameRecipe;
-
-        private TextView categoryName;
+        ConstraintLayout mainLayout;
 
         public RecipeViewHolder(@NonNull View itemView) {
             super(itemView);
             imageRecipe = itemView.findViewById(R.id.recipeImage);
             nameRecipe = itemView.findViewById(R.id.recipeName);
-            categoryName = itemView.findViewById(R.id.categoryName);
+            mainLayout = itemView.findViewById(R.id.mainLayout);
         }
     }
 }

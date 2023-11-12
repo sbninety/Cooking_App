@@ -1,12 +1,16 @@
 package com.example.cooking_app.Model;
 
 public class Instruction {
+    private int id;
     private int step;
     private String decription;
 
-    public Instruction(int step, String decription) {
-        this.step = step;
-        this.decription = decription;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getStep() {
@@ -22,6 +26,15 @@ public class Instruction {
     }
 
     public void setDecription(String decription) {
+        this.decription = decription;
+    }
+
+    public Instruction() {
+    }
+
+    public Instruction(int id, int step, String decription) {
+        this.id = id;
+        this.step = step;
         this.decription = decription;
     }
 }

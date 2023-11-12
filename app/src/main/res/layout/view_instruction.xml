@@ -9,6 +9,8 @@
         android:layout_height="match_parent"
         android:gravity="center_vertical"
         android:textSize="12sp"
-        android:paddingLeft="5dp"
+        android:paddingLeft="30dp"
+        android:paddingRight="50dp"
+        android:justificationMode="inter_word"
         android:text="thịt heo xay hoặc băm"/>
 </LinearLayout>

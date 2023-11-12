@@ -7,7 +7,7 @@
     tools:context=".Activity.WelcomeActivity">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageRecipe"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:foreground="@drawable/foreground_design"
@@ -27,7 +27,7 @@
         android:textColor="@color/white"
         android:textSize="33sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/imageView"
+        app:layout_constraintEnd_toEndOf="@id/imageRecipe"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.4" />

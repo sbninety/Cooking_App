@@ -27,28 +27,29 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/name1"
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
                     android:background="@color/orange"
                     android:gravity="center"
                     android:paddingLeft="10dp"
                     android:text="Bún riêu cua"
-                    android:textSize="25sp"
+                    android:textSize="22sp"
+                    android:fontFamily="@font/lobster"
                     android:textColor="#ffffff"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
-                    android:id="@+id/imageView"
+                    android:id="@+id/imageRecipe"
                     android:layout_width="match_parent"
                     android:layout_height="236dp"
-                    android:scaleType="fitXY"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/detail2"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView" />
+                    app:layout_constraintTop_toBottomOf="@+id/name1" />
             </LinearLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -59,15 +60,14 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView"
+                app:layout_constraintTop_toBottomOf="@+id/imageRecipe"
                 app:layout_constraintVertical_bias="0.0">
 
                 <LinearLayout
-
                     android:id="@+id/linearLayout4"
                     android:layout_width="410dp"
                     android:layout_height="50dp"
-                    android:background="#EFEAE9"
+                    android:background="#EEEEEE"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.47"
@@ -76,6 +76,7 @@
                     app:layout_constraintVertical_bias="0.0">
 
                     <TextView
+                        android:id="@+id/name2"
                         android:layout_width="184dp"
                         android:layout_height="50dp"
                         android:gravity="center"
@@ -83,7 +84,7 @@
                         android:textColor="@color/orange"
                         android:textSize="25dp"
                         android:textStyle="bold"
-                        app:layout_constraintTop_toBottomOf="@+id/imageView"
+                        app:layout_constraintTop_toBottomOf="@+id/imageRecipe"
                         tools:layout_editor_absoluteX="0dp">
 
                     </TextView>
@@ -107,7 +108,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView"
+                app:layout_constraintTop_toBottomOf="@+id/imageRecipe"
                 app:layout_constraintVertical_bias="0.134">
 
                 <LinearLayout
@@ -117,6 +118,7 @@
                     android:layout_height="50dp"
                     android:orientation="horizontal"
                     android:weightSum="4"
+                    android:background="#F5F5F5"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -133,6 +135,7 @@
                         android:paddingRight="5dp" />
 
                     <TextView
+                        android:id="@+id/time"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -149,6 +152,7 @@
                         android:paddingRight="5dp" />
 
                     <TextView
+                        android:id="@+id/people"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -162,7 +166,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="410dp"
                 android:layout_height="wrap_content"
-                android:background="#EFEAE9"
+                android:background="#FBFBFB"
                 android:layout_marginBottom="40dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -208,10 +212,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/list_instruction"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="30dp"
-                    android:paddingRight="30dp"
-                    android:paddingBottom="30dp"
+                    android:layout_height="1000dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView6" />
@@ -239,7 +240,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.5" />
+                android:layout_weight="0.2" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -251,7 +252,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1.3"
+                android:layout_weight="1.8"
+                android:textSize="10sp"
                 android:gravity="center"
                 android:text="Home" />
         </LinearLayout>
@@ -267,7 +269,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.5" />
+                android:layout_weight="0.2" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -279,8 +281,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1.3"
+                android:layout_weight="1.8"
                 android:gravity="center"
+                android:textSize="10sp"
                 android:text="Món ăn" />
         </LinearLayout>
         <LinearLayout
@@ -293,7 +296,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.5" />
+                android:layout_weight="0.2" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -305,7 +308,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1.3"
+                android:layout_weight="1.8"
+                android:textSize="10sp"
                 android:gravity="center"
                 android:text="Yêu thích" />
         </LinearLayout>
@@ -320,7 +324,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.5" />
+                android:layout_weight="0.2" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -332,7 +336,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1.3"
+                android:layout_weight="1.8"
+                android:textSize="10sp"
                 android:gravity="center"
                 android:text="Cài đặt" />
         </LinearLayout>
