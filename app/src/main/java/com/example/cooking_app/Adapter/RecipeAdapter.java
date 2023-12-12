@@ -12,6 +12,8 @@ import com.example.cooking_app.Activity.DetailRecipeActivity;
 import com.example.cooking_app.Model.Recipe;
 import com.example.cooking_app.R;
 
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,15 +22,21 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder> {
+public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder> implements Filterable {
 
     private ArrayList<Recipe> recipes;
+    private ArrayList<Recipe> recipesOld;
     private Context context;
 
     public RecipeAdapter(Context context,ArrayList<Recipe> recipes) {
         this.context = context;
         this.recipes = recipes;
+        this.recipesOld = recipes;
+    }
+    public RecipeAdapter(Context context) {
+        this.context = context;
     }
 
     @NonNull
@@ -67,6 +75,38 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
         if (recipes != null)
             return recipes.size();
         return 0;
+    }
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String keyWords = charSequence.toString();
+                if (keyWords.isEmpty()) {
+                    recipes = recipesOld;
+                } else {
+                    ArrayList<Recipe> list = new ArrayList<>();
+                    for (Recipe recipe : recipesOld) {
+                        if(recipe.getNameRecipe().toLowerCase().contains(keyWords.toLowerCase())){
+                            list.add(recipe);
+                        }
+                    }
+
+                    recipes = list;
+                }
+
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = recipes;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                recipes = (ArrayList<Recipe>)filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
     }
 
     public class RecipeViewHolder extends RecyclerView.ViewHolder {

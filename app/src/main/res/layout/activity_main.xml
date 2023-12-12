@@ -33,6 +33,7 @@
                     android:layout_marginLeft="50dp"
                     android:textColor="#fff" />
                 <ImageView
+                    android:id="@+id/search_icon"
                     android:layout_width="50dp"
                     android:layout_height="match_parent"
                     android:src="@drawable/search"

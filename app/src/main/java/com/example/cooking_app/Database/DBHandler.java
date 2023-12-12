@@ -130,6 +130,24 @@ public class DBHandler extends SQLiteOpenHelper {
         db.insert(TABLE_INSTRUCTION, null, values);
         db.close();
     }
+    public ArrayList<Recipe> getAllRecipe(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String sql = "SELECT * FROM " + TABLE_RECIPE;
+        Cursor cursor = db.rawQuery(sql, null);
+        ArrayList<Recipe> recipeList = new ArrayList<>();
+        if(cursor.moveToFirst()){
+            do{
+                Recipe recipe = new Recipe();
+                recipe.setId(cursor.getInt(0));
+                recipe.setNameRecipe(cursor.getString(1));
+                recipe.setImageRecipe(cursor.getString(2));
+                recipe.setTimeRecipe(cursor.getString(3));
+                recipe.setPeopleRecipe(cursor.getString(4));
+                recipeList.add(recipe);
+            }while (cursor.moveToNext());
+        }
+        return recipeList;
+    }
     public ArrayList<Recipe> listRecipebyCat(int id){
         SQLiteDatabase db = this.getReadableDatabase();
         String sql = "SELECT * FROM "

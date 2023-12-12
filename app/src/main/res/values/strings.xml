@@ -3,4 +3,5 @@
     <string name="welcome">Welcome</string>
     <string name="title_activity_sign_in">SignInActivity</string>
     <string name="title_activity_view_recipes">view_recipes</string>
+    <string name="title_activity_main2">MainActivity2</string>
 </resources>
