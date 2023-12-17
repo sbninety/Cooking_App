@@ -27,18 +27,17 @@ public class SignUpActivity extends AppCompatActivity {
         EditText password = findViewById(R.id.input_password);
         EditText check_password = findViewById(R.id.input_check_password);
         EditText name = findViewById(R.id.input_name);
-        Button login = findViewById(R.id.btn_signup);
+        Button sign_up = findViewById(R.id.btn_signup);
 
         TextView go_to_sign_in = findViewById(R.id.go_to_sign_in);
 
         DBHandler dbHandler = new DBHandler(this);
 
-        login.setOnClickListener(new View.OnClickListener() {
+        sign_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String Email = email.getText().toString();
                 String Password = password.getText().toString();
-                Toast.makeText(SignUpActivity.this, Password, Toast.LENGTH_SHORT).show();
                 String CheckPassword = check_password.getText().toString();
                 String Name = name.getText().toString();
 

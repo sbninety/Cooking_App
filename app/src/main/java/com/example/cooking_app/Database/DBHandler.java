@@ -11,6 +11,7 @@ import com.example.cooking_app.Model.Ingredient;
 import com.example.cooking_app.Model.IngredientDetail;
 import com.example.cooking_app.Model.Instruction;
 import com.example.cooking_app.Model.Recipe;
+import com.example.cooking_app.Model.User;
 
 import java.sql.Time;
 import java.util.ArrayList;
@@ -49,7 +50,7 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String USER_PASSWORD = "password";
     private static final String USER_NAME = "name";
     private static final String TABLE_WISHLIST = "wishlist";
-    private static final String WISHLIST_ID = "id";
+    private static final String WISHLIST_ID = "idWishList";
     private static final String ID_RE = "idRecipe";
     private static final String ID_USER = "idUser";
 
@@ -161,14 +162,25 @@ public class DBHandler extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void addWishList(int id, int userId, int recipeId){
+    public void addWishList(int userId, int recipeId){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(WISHLIST_ID, id);
         values.put(ID_RE, recipeId);
         values.put(ID_USER, userId);
         db.insert(TABLE_WISHLIST, null, values);
         db.close();
+    }
+
+    public boolean deleteWishList(int userId, int recipeId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String content = ID_RE + " = ? AND " + ID_USER + " = ?";
+        String[] value = {String.valueOf(recipeId), String.valueOf(userId)};
+
+        int deletedRows = db.delete(TABLE_WISHLIST, content, value);
+        db.close();
+
+        return deletedRows > 0;
     }
     public ArrayList<Recipe> getAllRecipe(){
         SQLiteDatabase db = this.getReadableDatabase();
@@ -323,7 +335,22 @@ public class DBHandler extends SQLiteOpenHelper {
             }while (cursor.moveToNext());
         }
         return recipeList;
+    }
 
+    public User getUser(String email){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String sql = "SELECT * FROM " + TABLE_USER + " WHERE " + USER_EMAIL + " = '" + email + "'";
+        Cursor cursor = db.rawQuery(sql, null);
+        User user = new User();
+        if(cursor.moveToFirst()){
+            do{
+                user.setId(cursor.getInt(0));
+                user.setEmail(cursor.getString(1));
+                user.setPassword(cursor.getString(2));
+                user.setName(cursor.getString(3));
+            }while (cursor.moveToNext());
+        }
+        return user;
     }
 
     public Boolean CheckEmail(String email){
@@ -341,6 +368,18 @@ public class DBHandler extends SQLiteOpenHelper {
     public Boolean CheckEmailPassword(String email, String password){
         SQLiteDatabase db = this.getWritableDatabase();
         String sql = "SELECT * FROM " + TABLE_USER + " WHERE " + USER_EMAIL + " = '" + email + "' AND " + USER_PASSWORD + " = '" + password + "'";
+        Cursor cursor = db.rawQuery(sql, null);
+        if (cursor.getCount() > 0){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public Boolean CheckWish(int userId, int recipeId){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String sql = "SELECT * FROM " + TABLE_WISHLIST + " WHERE " + ID_RE + " = '" + recipeId + "' AND " + ID_USER + " = '" + userId + "'";
         Cursor cursor = db.rawQuery(sql, null);
         if (cursor.getCount() > 0){
             return true;

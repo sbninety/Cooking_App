@@ -25,6 +25,7 @@ import com.example.cooking_app.Database.DBHandler;
 import com.example.cooking_app.Model.Category;
 import com.example.cooking_app.Model.Recipe;
 import com.example.cooking_app.Model.Slider;
+import com.example.cooking_app.Model.User;
 import com.example.cooking_app.R;
 
 import java.util.ArrayList;
@@ -45,14 +46,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         LinearLayout btnMeal = findViewById(R.id.bt_meal);
+        LinearLayout btnHeart = findViewById(R.id.heart);
         TextView btBac = findViewById(R.id.bt_bac);
         TextView btTrung = findViewById(R.id.bt_trung);
         TextView btNam = findViewById(R.id.bt_nam);
         ImageView iconSearch = findViewById(R.id.search_icon);
+        Bundle bundle = getIntent().getExtras();
         btnMeal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, CategoryActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnHeart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, WishListActivity.class);
                 startActivity(intent);
             }
         });

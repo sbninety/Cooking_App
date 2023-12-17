@@ -1,10 +1,11 @@
 package com.example.cooking_app.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.example.cooking_app.Adapter.RecipeAdapter;
@@ -14,40 +15,28 @@ import com.example.cooking_app.R;
 
 import java.util.ArrayList;
 
-public class SearchActivity extends AppCompatActivity {
+public class WishListActivity extends AppCompatActivity {
     private RecipeAdapter recipeAdapter;
-    private SearchView searchView;
     private RecyclerView listMonAn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search);
+        setContentView(R.layout.activity_wish_list);
+
+        SharedPreferences preferences = getSharedPreferences("user_info", Context.MODE_PRIVATE);
+        int userId = preferences.getInt("user_id",0);
 
         ArrayList<Recipe> recipeList = new ArrayList<>();
         DBHandler dbHandler = new DBHandler(this);
-        recipeList = dbHandler.getAllRecipe();
+        recipeList =  dbHandler.getWishList(userId);
         recipeAdapter = new RecipeAdapter(this,recipeList);
         monAn(recipeAdapter);
-
-        searchView = findViewById(R.id.search);
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                recipeAdapter.getFilter().filter(query);
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                recipeAdapter.getFilter().filter(newText);
-                return false;
-            }
-        });
     }
 
     private void monAn(RecipeAdapter adapter) {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3);
-        listMonAn = findViewById(R.id.search_list);
+        listMonAn = findViewById(R.id.wish_list);
         listMonAn.setLayoutManager(gridLayoutManager);
         listMonAn.setAdapter(adapter);
     }

@@ -1,12 +1,19 @@
 package com.example.cooking_app.Activity;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,6 +25,7 @@ import com.example.cooking_app.Model.Ingredient;
 import com.example.cooking_app.Model.IngredientDetail;
 import com.example.cooking_app.Model.Instruction;
 import com.example.cooking_app.Model.Recipe;
+import com.example.cooking_app.Model.User;
 import com.example.cooking_app.R;
 
 import java.util.ArrayList;
@@ -30,6 +38,17 @@ public class DetailRecipeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detail);
+
+        DBHandler dbHandler = new DBHandler(this);
+
+        TextView wish = findViewById(R.id.wish);
+        Drawable favorite = ContextCompat.getDrawable(this, R.drawable.baseline_favorite_24);
+        Drawable unfavorite = ContextCompat.getDrawable(this, R.drawable.baseline_favorite_border_24);
+
+        SharedPreferences preferences = getSharedPreferences("user_info", Context.MODE_PRIVATE);
+        int userId = preferences.getInt("user_id",0);
+
+
         Bundle bundle = getIntent().getExtras();
         if(bundle == null){
             return;
@@ -44,10 +63,46 @@ public class DetailRecipeActivity extends AppCompatActivity {
         TextView people = findViewById(R.id.people);
         people.setText(recipe.getPeopleRecipe() + " người");
         ImageView imageRecipe = findViewById(R.id.imageRecipe);
-        int drawableReourceId = getResources().getIdentifier(recipe.getImageRecipe(),"drawable",getPackageName());
-        Glide.with(this).load(drawableReourceId).into(imageRecipe);
+        int drawableReSourceId = getResources().getIdentifier(recipe.getImageRecipe(),"drawable",getPackageName());
+        Glide.with(this).load(drawableReSourceId).into(imageRecipe);
         NguyenLieu(recipe);
         CongThuc(recipe);
+
+        //Check recipe xem co trong danh sach yeu thich cua nguoi dung khong
+        Boolean check = dbHandler.CheckWish(userId, recipe.getId());
+        if (check == true)
+        {
+            wish.setCompoundDrawablesWithIntrinsicBounds(favorite, null, null, null);
+        }
+        else wish.setCompoundDrawablesWithIntrinsicBounds(unfavorite, null, null, null);
+
+        //Add wishlist or delete wishlist
+        wish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Boolean checkFavorite = dbHandler.CheckWish(userId, recipe.getId());
+                if (checkFavorite == false)
+                {
+                    try {
+                        dbHandler.addWishList(userId, recipe.getId());
+                        wish.setCompoundDrawablesWithIntrinsicBounds(favorite, null, null, null);
+                        Toast.makeText(DetailRecipeActivity.this, "Đã thêm vào yêu thích!!!", Toast.LENGTH_SHORT).show();
+                    } catch (Exception e)
+                    {
+                        Toast.makeText(DetailRecipeActivity.this, "Thất bại", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else {
+                    Boolean delete = dbHandler.deleteWishList(userId, recipe.getId());
+                    if (delete == true)
+                    {
+                        wish.setCompoundDrawablesWithIntrinsicBounds(unfavorite, null, null, null);
+                        Toast.makeText(DetailRecipeActivity.this, "Đã bỏ khỏi yêu thích!!", Toast.LENGTH_SHORT).show();
+                    }
+                    else Toast.makeText(DetailRecipeActivity.this, "Thất bại", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     private void CongThuc(Recipe recipe) {
