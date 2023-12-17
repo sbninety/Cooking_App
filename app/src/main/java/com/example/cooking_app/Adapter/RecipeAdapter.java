@@ -53,8 +53,8 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
         {
             return;
         }
-        int drawableReourceId = holder.itemView.getContext().getResources().getIdentifier(recipe.getImageRecipe(),"drawable",holder.itemView.getContext().getPackageName());
-        Glide.with(holder.itemView.getContext()).load(drawableReourceId).into(holder.imageRecipe);
+        int drawableReSourceId = holder.itemView.getContext().getResources().getIdentifier(recipe.getImageRecipe(),"drawable",holder.itemView.getContext().getPackageName());
+        Glide.with(holder.itemView.getContext()).load(drawableReSourceId).into(holder.imageRecipe);
         holder.nameRecipe.setText(recipe.getNameRecipe());
         holder.mainLayout.setOnClickListener(new View.OnClickListener() {
             @Override

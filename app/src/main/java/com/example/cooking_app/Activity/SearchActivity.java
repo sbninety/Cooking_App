@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class SearchActivity extends AppCompatActivity {
     private RecipeAdapter recipeAdapter;
     private SearchView searchView;
-    private RecyclerView listMonAnMienTrung;
+    private RecyclerView listMonAn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,9 +47,9 @@ public class SearchActivity extends AppCompatActivity {
 
     private void monAn(RecipeAdapter adapter) {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3);
-        listMonAnMienTrung = findViewById(R.id.search_list);
-        listMonAnMienTrung.setLayoutManager(gridLayoutManager);
+        listMonAn = findViewById(R.id.search_list);
+        listMonAn.setLayoutManager(gridLayoutManager);
         ArrayList<Recipe> recipeList = new ArrayList<>();
-        listMonAnMienTrung.setAdapter(adapter);
+        listMonAn.setAdapter(adapter);
     }
 }

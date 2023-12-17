@@ -41,6 +41,7 @@
             app:layout_constraintTop_toBottomOf="@+id/icon_sg" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+
     <EditText
         android:id="@+id/input_email"
         android:layout_width="325dp"
@@ -76,22 +77,38 @@
         android:drawablePadding="10dp"/>
 
     <EditText
-        android:id="@+id/input_name"
+        android:id="@+id/input_check_password"
         android:layout_width="325dp"
         android:layout_height="50dp"
+        android:background="@drawable/edittext_bg"
+        android:drawableLeft="@drawable/baseline_key_24"
+        android:drawablePadding="10dp"
+        android:elevation="20dp"
+        android:hint="Nhập lại mật khẩu"
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/input_password"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/input_password"
         app:layout_constraintTop_toBottomOf="@+id/input_password"
-        app:layout_constraintVertical_bias="0.116"
+        app:layout_constraintVertical_bias="0.14" />
+
+    <EditText
+        android:id="@+id/input_name"
+        android:layout_width="325dp"
+        android:layout_height="50dp"
         android:background="@drawable/edittext_bg"
-        android:elevation="20dp"
-        android:hint="Nhập tên"
         android:drawableLeft="@drawable/baseline_account_circle_24"
         android:drawablePadding="10dp"
-        />
+        android:elevation="20dp"
+        android:hint="Nhập tên"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/input_check_password"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/input_check_password"
+        app:layout_constraintTop_toBottomOf="@+id/input_check_password"
+        app:layout_constraintVertical_bias="0.193" />
 
     <Button
         android:id="@+id/btn_signup"
@@ -100,10 +117,10 @@
         android:backgroundTint="@color/orange"
         android:text="ĐĂNG KÝ"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/input_password"
+        app:layout_constraintEnd_toEndOf="@+id/input_name"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/input_password"
-        app:layout_constraintTop_toBottomOf="@+id/input_password"
+        app:layout_constraintStart_toStartOf="@+id/input_name"
+        app:layout_constraintTop_toBottomOf="@+id/input_name"
         app:layout_constraintVertical_bias="0.599" />
 
     <LinearLayout

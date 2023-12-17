@@ -43,6 +43,15 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String STEP = "step";
     private static final String DECRIPTION = "decription";
     private static final String RE_ID = "recipeId";
+    private static final String TABLE_USER = "user";
+    private static final String USER_ID = "id";
+    private static final String USER_EMAIL = "email";
+    private static final String USER_PASSWORD = "password";
+    private static final String USER_NAME = "name";
+    private static final String TABLE_WISHLIST = "wishlist";
+    private static final String WISHLIST_ID = "id";
+    private static final String ID_RE = "idRecipe";
+    private static final String ID_USER = "idUser";
 
     public DBHandler(Context context){
         super(context,DB_NAME,null,DB_VERSION);
@@ -79,6 +88,17 @@ public class DBHandler extends SQLiteOpenHelper {
                 + DECRIPTION + " TEXT, "
                 + RE_ID + " INTERGER)";
         db.execSQL(query6);
+        String query7 = "CREATE TABLE " + TABLE_USER + "("
+                + USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + USER_EMAIL + " TEXT, "
+                + USER_PASSWORD + " TEXT, "
+                + USER_NAME + " TEXT)";
+        db.execSQL(query7);
+        String query8 = "CREATE TABLE " + TABLE_WISHLIST + "("
+                + WISHLIST_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + ID_RE + " INTEGER, "
+                + ID_USER + " INTEGER)";
+        db.execSQL(query8);
     }
     public void addCategory(String name){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -128,6 +148,26 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(STEP, step);
         values.put(DECRIPTION, decription);
         db.insert(TABLE_INSTRUCTION, null, values);
+        db.close();
+    }
+
+    public void addUser(String email, String password, String name){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(USER_EMAIL, email);
+        values.put(USER_PASSWORD, password);
+        values.put(USER_NAME, name);
+        db.insert(TABLE_USER, null, values);
+        db.close();
+    }
+
+    public void addWishList(int id, int userId, int recipeId){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(WISHLIST_ID, id);
+        values.put(ID_RE, recipeId);
+        values.put(ID_USER, userId);
+        db.insert(TABLE_WISHLIST, null, values);
         db.close();
     }
     public ArrayList<Recipe> getAllRecipe(){
@@ -261,6 +301,56 @@ public class DBHandler extends SQLiteOpenHelper {
         }
         return instructions;
     }
+
+    public ArrayList<Recipe> getWishList(int idUser){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String sql = "SELECT * FROM "
+                +  TABLE_RECIPE + " INNER JOIN "
+                + TABLE_WISHLIST + " ON "
+                + ID_RECIPE + " = " + ID_RE
+                + " WHERE " + ID_USER + " = " + idUser;
+        Cursor cursor = db.rawQuery(sql, null);
+        ArrayList<Recipe> recipeList = new ArrayList<>();
+        if(cursor.moveToFirst()){
+            do{
+                Recipe recipe = new Recipe();
+                recipe.setId(cursor.getInt(0));
+                recipe.setNameRecipe(cursor.getString(1));
+                recipe.setImageRecipe(cursor.getString(2));
+                recipe.setTimeRecipe(cursor.getString(3));
+                recipe.setPeopleRecipe(cursor.getString(4));
+                recipeList.add(recipe);
+            }while (cursor.moveToNext());
+        }
+        return recipeList;
+
+    }
+
+    public Boolean CheckEmail(String email){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String sql = "SELECT * FROM " + TABLE_USER + " WHERE " + USER_EMAIL  + " = '" + email + "' ";
+        Cursor cursor = db.rawQuery(sql, null);
+        if (cursor.getCount() > 0){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public Boolean CheckEmailPassword(String email, String password){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String sql = "SELECT * FROM " + TABLE_USER + " WHERE " + USER_EMAIL + " = '" + email + "' AND " + USER_PASSWORD + " = '" + password + "'";
+        Cursor cursor = db.rawQuery(sql, null);
+        if (cursor.getCount() > 0){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_RECIPE);
