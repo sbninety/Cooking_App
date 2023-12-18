@@ -1,10 +1,15 @@
 package com.example.cooking_app.Database;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Log;
 
 import com.example.cooking_app.Model.Category;
 import com.example.cooking_app.Model.Ingredient;
@@ -13,6 +18,7 @@ import com.example.cooking_app.Model.Instruction;
 import com.example.cooking_app.Model.Recipe;
 import com.example.cooking_app.Model.User;
 
+import java.io.ByteArrayOutputStream;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +55,7 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String USER_EMAIL = "email";
     private static final String USER_PASSWORD = "password";
     private static final String USER_NAME = "name";
+    private static final String USER_IMAGE = "image";
     private static final String TABLE_WISHLIST = "wishlist";
     private static final String WISHLIST_ID = "idWishList";
     private static final String ID_RE = "idRecipe";
@@ -93,7 +100,8 @@ public class DBHandler extends SQLiteOpenHelper {
                 + USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + USER_EMAIL + " TEXT, "
                 + USER_PASSWORD + " TEXT, "
-                + USER_NAME + " TEXT)";
+                + USER_NAME + " TEXT, "
+                + USER_IMAGE + " BLOB)";
         db.execSQL(query7);
         String query8 = "CREATE TABLE " + TABLE_WISHLIST + "("
                 + WISHLIST_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
@@ -348,6 +356,11 @@ public class DBHandler extends SQLiteOpenHelper {
                 user.setEmail(cursor.getString(1));
                 user.setPassword(cursor.getString(2));
                 user.setName(cursor.getString(3));
+                @SuppressLint("Range") byte[] imageData = cursor.getBlob(cursor.getColumnIndex("image"));
+                if (imageData != null && imageData.length > 0) {
+                    Bitmap bitmap =BitmapFactory.decodeByteArray(imageData, 0, imageData.length);
+                    user.setImage(bitmap);
+                }
             }while (cursor.moveToNext());
         }
         return user;
@@ -385,6 +398,54 @@ public class DBHandler extends SQLiteOpenHelper {
             return true;
         }
         else {
+            return false;
+        }
+    }
+
+    public boolean updateImage(int userId, Bitmap newImage) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        byte[] imageData = convertBitmapToByteArray(newImage);
+        contentValues.put(USER_IMAGE, imageData);
+        String whereClause = USER_ID + "=?";
+        String[] whereArgs = {String.valueOf(userId)};
+        int result = db.update(TABLE_USER, contentValues, whereClause, whereArgs);
+        return result != -1;
+    }
+
+    // Phương thức chuyển đổi Bitmap thành mảng byte
+    private byte[] convertBitmapToByteArray(Bitmap bitmap) {
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        return stream.toByteArray();
+    }
+
+    public Boolean changeNameUser(int userId, String name) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        String sql = "UPDATE " + TABLE_USER + " SET " + USER_NAME + " = '" + name + "' WHERE " + USER_ID + " = " + userId;
+        try {
+            db.execSQL(sql);
+            db.close();
+            return true;
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public Boolean changePassword(int userId, String password) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        String sql = "UPDATE " + TABLE_USER + " SET " + USER_PASSWORD + " = '" + password + "' WHERE " + USER_ID + " = " + userId;
+        try {
+            db.execSQL(sql);
+            db.close();
+            return true;
+        } catch (Exception e)
+        {
+            e.printStackTrace();
             return false;
         }
     }

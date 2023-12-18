@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,6 +18,7 @@ import com.example.cooking_app.Database.DBHandler;
 import com.example.cooking_app.Model.User;
 import com.example.cooking_app.R;
 
+import java.io.ByteArrayOutputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -27,7 +30,7 @@ public class SignInActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_in);
         TextView go_to_sign_up = findViewById(R.id.go_to_sign_up);
         EditText email = findViewById(R.id.input_email);
-        EditText pasword = findViewById(R.id.input_password);
+        EditText password = findViewById(R.id.input_password);
         Button bt_sign_in = findViewById(R.id.btn_signin);
 
         DBHandler dbHandler = new DBHandler(this);
@@ -36,7 +39,7 @@ public class SignInActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String Email = email.getText().toString();
-                String Password = pasword.getText().toString();
+                String Password = password.getText().toString();
 
                 if (Email.equals("") || Password.equals(""))
                 {
@@ -52,6 +55,7 @@ public class SignInActivity extends AppCompatActivity {
                         editor.putInt("user_id", user.getId());
                         editor.putString("user_email", user.getEmail());
                         editor.putString("user_name", user.getName());
+                        editor.putString("user_password", user.getPassword());
                         editor.commit();
 
                         Toast.makeText(SignInActivity.this, "Đăng nhập thành công!!!", Toast.LENGTH_SHORT).show();
@@ -63,6 +67,7 @@ public class SignInActivity extends AppCompatActivity {
                     }
                 }
             }
+
         });
         go_to_sign_up.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,4 +96,6 @@ public class SignInActivity extends AppCompatActivity {
         }
         return "";
     }
+
+
 }

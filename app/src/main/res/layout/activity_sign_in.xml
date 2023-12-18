@@ -72,6 +72,7 @@
        android:background="@drawable/edittext_bg"
        android:elevation="20dp"
        android:hint="Nhập mật khẩu"
+       android:inputType="textPassword"
        android:drawableLeft="@drawable/baseline_key_24"
        android:drawablePadding="10dp"/>
 

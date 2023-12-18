@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         LinearLayout btnMeal = findViewById(R.id.bt_meal);
         LinearLayout btnHeart = findViewById(R.id.heart);
+        LinearLayout setting = findViewById(R.id.setting);
         TextView btBac = findViewById(R.id.bt_bac);
         TextView btTrung = findViewById(R.id.bt_trung);
         TextView btNam = findViewById(R.id.bt_nam);
@@ -64,6 +65,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, WishListActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, UserActivity.class);
                 startActivity(intent);
             }
         });
