@@ -45,6 +45,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
+            android:id="@+id/bt_home"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -101,6 +102,7 @@
                 android:text="Món ăn" />
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/heart"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -129,6 +131,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/setting"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"

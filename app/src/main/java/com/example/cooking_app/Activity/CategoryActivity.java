@@ -28,10 +28,28 @@ public class CategoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_categories);
 
         LinearLayout btnHome = findViewById(R.id.bt_home);
+        LinearLayout btnWishlist = findViewById(R.id.heart);
+        LinearLayout btnSetting = findViewById(R.id.setting);
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(CategoryActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnWishlist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CategoryActivity.this, WishListActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnSetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CategoryActivity.this, UserActivity.class);
                 startActivity(intent);
             }
         });

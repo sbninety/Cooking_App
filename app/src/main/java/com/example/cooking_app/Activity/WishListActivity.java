@@ -5,8 +5,11 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.LinearLayout;
 
 import com.example.cooking_app.Adapter.RecipeAdapter;
 import com.example.cooking_app.Database.DBHandler;
@@ -23,6 +26,35 @@ public class WishListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wish_list);
+
+        LinearLayout btnHome = findViewById(R.id.bt_home);
+        LinearLayout btnMeal = findViewById(R.id.bt_meal);
+        LinearLayout btnSetting = findViewById(R.id.setting);
+
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(WishListActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnMeal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(WishListActivity.this, CategoryActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        btnSetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(WishListActivity.this, UserActivity.class);
+                startActivity(intent);
+            }
+        });
 
         SharedPreferences preferences = getSharedPreferences("user_info", Context.MODE_PRIVATE);
         int userId = preferences.getInt("user_id",0);

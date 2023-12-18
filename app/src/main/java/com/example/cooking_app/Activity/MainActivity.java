@@ -52,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
         TextView btTrung = findViewById(R.id.bt_trung);
         TextView btNam = findViewById(R.id.bt_nam);
         ImageView iconSearch = findViewById(R.id.search_icon);
-        Bundle bundle = getIntent().getExtras();
         btnMeal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,6 +41,43 @@ public class DetailRecipeActivity extends AppCompatActivity {
         setContentView(R.layout.detail);
 
         DBHandler dbHandler = new DBHandler(this);
+
+        LinearLayout btnHome = findViewById(R.id.bt_home);
+        LinearLayout btnMeal = findViewById(R.id.bt_meal);
+        LinearLayout btnWishlist = findViewById(R.id.heart);
+        LinearLayout btnSetting = findViewById(R.id.setting);
+
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DetailRecipeActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnMeal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DetailRecipeActivity.this, CategoryActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnWishlist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DetailRecipeActivity.this, WishListActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnSetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DetailRecipeActivity.this, UserActivity.class);
+                startActivity(intent);
+            }
+        });
 
         TextView wish = findViewById(R.id.wish);
         Drawable favorite = ContextCompat.getDrawable(this, R.drawable.baseline_favorite_24);

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.cooking_app.Database.DBHandler;
@@ -31,6 +32,43 @@ public class EditUserProfileActivity extends AppCompatActivity {
         EditText EditTextNewPassword = findViewById(R.id.inputNewPassword);
         Button btnChangeName = findViewById(R.id.btnChangeName);
         Button btnChangePassword = findViewById(R.id.btnChangePassword);
+
+        LinearLayout btnHome = findViewById(R.id.bt_home);
+        LinearLayout btnMeal = findViewById(R.id.bt_meal);
+        LinearLayout btnWishlist = findViewById(R.id.heart);
+        LinearLayout btnSetting = findViewById(R.id.setting);
+
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(EditUserProfileActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnMeal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(EditUserProfileActivity.this, CategoryActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnWishlist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(EditUserProfileActivity.this, WishListActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnSetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(EditUserProfileActivity.this, UserActivity.class);
+                startActivity(intent);
+            }
+        });
 
         SharedPreferences preferences = getSharedPreferences("user_info", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();

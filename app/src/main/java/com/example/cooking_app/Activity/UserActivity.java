@@ -29,6 +29,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.imageview.ShapeableImageView;
 
 import android.provider.MediaStore;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -55,6 +56,35 @@ public class UserActivity extends AppCompatActivity {
         Button buttonLogout = findViewById(R.id.btn_Logout);
         Button buttonAccount = findViewById(R.id.btn_account);
         Button buttonWishList = findViewById(R.id.btn_wishList);
+
+        LinearLayout btnHome = findViewById(R.id.bt_home);
+        LinearLayout btnMeal = findViewById(R.id.bt_meal);
+        LinearLayout btnWishlist = findViewById(R.id.heart);
+
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(UserActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnMeal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(UserActivity.this, CategoryActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnWishlist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(UserActivity.this, WishListActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         SharedPreferences preferences = getSharedPreferences("user_info", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();

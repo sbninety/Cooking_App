@@ -5,7 +5,10 @@ import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.LinearLayout;
 
 import com.example.cooking_app.Adapter.RecipeAdapter;
 import com.example.cooking_app.Database.DBHandler;
@@ -22,6 +25,43 @@ public class SearchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+
+        LinearLayout btnHome = findViewById(R.id.bt_home);
+        LinearLayout btnMeal = findViewById(R.id.bt_meal);
+        LinearLayout btnWishlist = findViewById(R.id.heart);
+        LinearLayout btnSetting = findViewById(R.id.setting);
+
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SearchActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnMeal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SearchActivity.this, CategoryActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnWishlist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SearchActivity.this, WishListActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnSetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SearchActivity.this, UserActivity.class);
+                startActivity(intent);
+            }
+        });
 
         ArrayList<Recipe> recipeList = new ArrayList<>();
         DBHandler dbHandler = new DBHandler(this);
